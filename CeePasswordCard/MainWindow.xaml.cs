@@ -59,7 +59,7 @@ namespace CeePasswordCard
             string result = "";
             string posStr = new(PosTextBox.Text.Where(x => !"\r\n\t 　,;:，；：".Contains(x)).ToArray());
             posStr = posStr.ToUpperInvariant();
-            if (posStr.Length > 0 && posStr.Length % 2 != 0)
+            if (posStr.Length <= 0 || posStr.Length % 2 != 0)
             {
                 _ = MessageBox.Show(this, "您输入的坐标无限哦，先检查一下再试试吧", "查询失败啦", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
