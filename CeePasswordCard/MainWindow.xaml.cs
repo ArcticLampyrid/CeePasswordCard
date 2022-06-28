@@ -48,7 +48,7 @@ namespace CeePasswordCard
             data = content
                 .Split(new char[] { '\n', '\r' })
                 .Where(x => !string.IsNullOrWhiteSpace(x))
-                .Select(line => line.Split(new char[] { '\t', ' ', ',', ';' , ':'}).Where(x => !string.IsNullOrWhiteSpace(x)).ToArray())
+                .Select(line => line.Split(new char[] { '\t', ' ', '　', ',', ';', ':', '，', '；', '：' }).Where(x => !string.IsNullOrWhiteSpace(x)).ToArray())
                 .ToArray();
             content = string.Join(Environment.NewLine, data.Select(line => string.Join("  ", line)));
             ContentTextBox.Text = content;
@@ -57,7 +57,7 @@ namespace CeePasswordCard
         private void QueryButton_Click(object sender, RoutedEventArgs e)
         {
             string result = "";
-            string posStr = new(PosTextBox.Text.Where(x => !"\r\n\t ,;:".Contains(x)).ToArray());
+            string posStr = new(PosTextBox.Text.Where(x => !"\r\n\t 　,;:，；：".Contains(x)).ToArray());
             posStr = posStr.ToUpperInvariant();
             if (posStr.Length > 0 && posStr.Length % 2 != 0)
             {
